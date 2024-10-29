@@ -1,0 +1,23 @@
+.second {
+    max-width: 70%;
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+
+    &_list {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 250px;
+    }
+}
+}
+@media only screen and (max-width: 992px) {
+    .products {
+        display: flex;
+        &_list {
+            width: 300px !important;
+        }
+    }
+}
