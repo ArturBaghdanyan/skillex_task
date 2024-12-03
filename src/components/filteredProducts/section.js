@@ -26,7 +26,7 @@ const SectionList = (props) => {
             >
             <option value="">All Categories</option>
             {categories.map((category, index) => (
-                    <option key={index} value={category}>{category}</option>
+                <option key={index} value={category}>{category}</option>
             ))}
             </select>
 
@@ -37,7 +37,7 @@ const SectionList = (props) => {
             >
             <option value="">All Brands</option>
             {brands.map((brand, index) => (
-                    <option key={index} value={brand}>{brand}</option>
+                <option key={index} value={brand}>{brand}</option>
             ))}
             </select>
         </div>
