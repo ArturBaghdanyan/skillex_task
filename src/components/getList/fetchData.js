@@ -1,26 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import style from "./style.module.scss";
+import headPhoneImg from "../../assets/headphone.png";
+import speaker from "../../assets/speaker.png";
+import shoes from "../../assets/shoes.png";
+import smartphone from "../../assets/smartphone.png";
+import jacket from "../../assets/jacket.png";
 
-export const FetchData = ( { list, setList, setError } ) => {
+
+export const FetchData = ({ list, setList, setError }) => {
 	const [show, setShow] = useState(false);
-
-	useEffect(() => {
-		const items = JSON.parse(localStorage.getItem('items'));
-
-		if (items && items.length > 0) {
-			setList(items);
-			setShow(true);
-			setError('');
-		} else {
-			const errorMessage = 'No items found!!!.'; 
-			setError(errorMessage); 
+  
+	const dataFetch = useCallback(async () => {
+	  try {
+		const response = await fetch('/data/products');
+		if (!response.ok) {
+		  throw new Error('Failed to fetch products. Please try again later.');
 		}
-	}, [setList, setError]); 
-
+		const data = await response.json();
+  
+		const validProducts = data.products.filter(product => product.rating > 0);
+  
+		setList(validProducts);
+		localStorage.setItem('items', JSON.stringify(validProducts)); 
+		setShow(true);
+		setError('');
+	  } catch (error) {
+		setError(error.message);
+	  }
+	}, [setList, setError]);
+  
 	useEffect(() => {
-		localStorage.setItem('items', JSON.stringify(list));
-	}, [list]);
+  
+	  try {
+		const items = JSON.parse(localStorage.getItem('items'));
+  
+		if (items && items.length > 0) {
+		  setList(items.filter((item) => item.rating > 0));
+		  setShow(true);
+		  setError('');
+		} else {
+		  setError('No items found in local storage!');
+		}
+	  } catch {
+		setError('Failed to access local storage.');
+	  }
+	}, [setList, setError]);
+  
+	useEffect(() => {
+	  if (list.length === 0) {
+		dataFetch();
+	  }
+	}, [list, dataFetch]);
 	
+	const imageMap = {
+		headphone: headPhoneImg,
+		speaker,
+		shoes,
+		smartphone,
+		jacket,
+	  };
+
 return (
 	<div className={style.second}>
 		{show && (
@@ -33,7 +72,7 @@ return (
 					<p><strong>Price:</strong> ${item.price}</p>
 					<p><strong>Rating:</strong> {item.rating}</p>
 					<img 
-						src={item.imageUrl} 
+						src={imageMap[item.imageUrl] || item.imageUrl}
 						alt={item.name} 
 						style={{ width: "100px", height: "100px" }} 
 					/>
