@@ -30,6 +30,7 @@ const applyFilters = () => {
 		const matchesSearch = filters.search ? product.name.toLowerCase().includes(filters.search.toLowerCase()) : true;
 		return matchesCategory && matchesBrand && matchesPrice  && matchesRating && matchesSearch;
 	});
+
 	if (sortCriteria) {
 		results.sort((a, b) => {
 			if (sortCriteria === 'price') {
@@ -52,7 +53,10 @@ applyFilters();
 return (
 <div className={style.container}>
 	
-	<button onClick={() => setMobileMenu(!mobileMenu)} className={style.container_mobile_icon}>
+	<button 
+		onClick={() => setMobileMenu(!mobileMenu)} 
+		className={style.container_mobile_icon}
+	>
 		<img src={menuIcon} alt='mobileIcon' />
 	</button>
 
@@ -71,7 +75,8 @@ return (
 			/>
 		</div>
 	)}
-	{error && !list.length && <div className={style.error}>{error}</div>}
+	{error && !list.length && <div className={style.error}>
+		do not have been found elements</div>}
 
 	<SectionList 
 		filters={filters} 
