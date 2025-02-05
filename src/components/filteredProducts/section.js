@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import style from '../style.module.scss';
-import products from '../../data/products.json';
 
 const SectionList = (props) => {
-    const {filters, setFilters, isMobile,sortCriteria, setSortCriteria} = props;
+    const {filters, setFilters, isMobile,sortCriteria, setSortCriteria, products, setProducts} = props;
+    
+    useEffect(() => {
+        fetch('/products.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetched data:", data);
+                setProducts(data.products);
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }, []);
+
 
     const categories = [...new Set(products.map(item => item.category))];
     const brands = [...new Set(products.map(item => item.brand))];

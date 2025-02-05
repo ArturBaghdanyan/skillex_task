@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import products from '../../data/products.json';
+// import products from '../../../public/products.json';
 import { FetchData } from '../getList/fetchData';
 import style from "../style.module.scss";
 import menuIcon from "../../assets/menuIcon.svg";
@@ -11,6 +11,7 @@ const ProductsList = () => {
 const [list, setList] = useState([]);
 const [mobileMenu, setMobileMenu] = useState(false);
 const [error, setError] = useState('');
+const [products, setProducts] = useState([]);
 const [sortCriteria, setSortCriteria] = useState('');
 const [filters, setFilters] = useState({
 	category: "",
@@ -71,6 +72,8 @@ return (
 				setFilters={setFilters} 
 				sortCriteria={sortCriteria} 
 				setSortCriteria={setSortCriteria} 
+				products={products}
+				setProducts={setProducts}
 				isMobile 
 			/>
 		</div>
@@ -83,6 +86,8 @@ return (
 		setFilters={setFilters} 
 		sortCriteria={sortCriteria} 
 		setSortCriteria={setSortCriteria}
+		products={products}
+		setProducts={setProducts}
 	/>
 	<FetchData list={list} setList={setList} setError={setError} />
 </div>

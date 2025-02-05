@@ -12,7 +12,7 @@ export const FetchData = ({ list, setList, setError }) => {
   
 	const dataFetch = useCallback(async () => {
 	  try {
-		const response = await fetch('/data/products');
+		const response = await fetch('/products.json');
 		if (!response.ok) {
 		  throw new Error('Failed to fetch products. Please try again later.');
 		}

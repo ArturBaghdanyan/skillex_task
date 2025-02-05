@@ -1,4 +1,5 @@
-[
+{
+  "products": [
   {
     "id": 1,
     "name": "Wireless Headphones",
@@ -44,4 +45,5 @@
     "rating": 4.7,
     "imageUrl": "jacket"
   }
-  ]
+]
+}
