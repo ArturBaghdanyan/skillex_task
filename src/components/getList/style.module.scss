@@ -1,23 +1,30 @@
 .second {
-    max-width: 70%;
+  max-width: 70%;
 
-.products {
+  .products {
     display: flex;
     flex-wrap: wrap;
-
+    align-content: center;
     &_list {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 10px;
-        width: 250px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border: 2px solid green;
+      border-radius: 12px;
+      background: transparent;
     }
-}
+    &_list:hover {
+        background: rgb(246, 242, 242);
+        border: 2px solid blue;
+    }
+  }
 }
 @media only screen and (max-width: 992px) {
-    .products {
-        display: flex;
-        &_list {
-            width: 300px !important;
-        }
+  .products {
+    display: flex;
+    &_list {
+      width: 300px !important;
     }
+  }
 }

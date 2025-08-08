@@ -1,0 +1,143 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+
+  &_mobile_icon {
+    display: none;
+  }
+
+  &_column {
+    width: 250px;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  &_first {
+    max-width: 30%;
+    height: 100vh;
+    min-height: 100vh;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid green;
+
+    .container_options {
+      display: flex;
+      column-gap: 30px;
+    }
+
+    select {
+      padding: 5px;
+      height: 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+
+      > option {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+    select:hover {
+      color: white;
+      background: lightblue;
+      border: none;
+    }
+    .container_priceRange {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &_sec {
+    display: none;
+  }
+  .sort {
+    width: 100%;
+    height: 30px;
+  }
+}
+@media only screen and (min-width: 368px) and (max-width: 850px) {
+  .container {
+    &_first {
+      .container_options {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+    }
+    .container_sec {
+      display: none;
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container {
+    &_mobile_icon {
+      display: flex;
+      width: 30%;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 10px;
+
+      > img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .mobile_menu {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: lightgray;
+      z-index: 100;
+      padding-top: 20px;
+      overflow-y: auto;
+
+      .closeButton {
+        align-self: flex-end;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        > img {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    .container_first {
+      display: none;
+    }
+    .container_sec {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      margin: 10px;
+      padding: 10px;
+
+      .container_options {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+      }
+      select {
+        padding: 5px;
+        height: 30px;
+        border-radius: 5px;
+      }
+      .container_priceRange {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
