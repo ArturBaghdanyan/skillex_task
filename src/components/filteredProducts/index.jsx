@@ -63,7 +63,7 @@ const ProductsList = () => {
     };
 
     applyFilters();
-  }, [filters, sortCriteria]);
+  }, [filters, sortCriteria, products]);
 
   return (
     <div className={style.container}>

@@ -12,13 +12,17 @@ const SectionList = ({
   setProducts,
 }) => {
   useEffect(() => {
-    fetch("/products.json")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/products.json");
+        const data = await response.json();
         console.log("Fetched data:", data);
         setProducts(data.products);
-      })
-      .catch((error) => console.error("Error fetching products:", error));
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchData();
   }, []);
 
   const categories = [...new Set(products.map((item) => item.category))];
