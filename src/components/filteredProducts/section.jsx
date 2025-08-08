@@ -1,18 +1,16 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import style from "./style.module.scss";
 
-const SectionList = (props) => {
-  const {
-    filters,
-    setFilters,
-    isMobile,
-    sortCriteria,
-    setSortCriteria,
-    products,
-    setProducts,
-  } = props;
-
+const SectionList = ({
+  filters,
+  setFilters,
+  isMobile,
+  sortCriteria,
+  setSortCriteria,
+  products,
+  setProducts,
+}) => {
   useEffect(() => {
     fetch("/products.json")
       .then((response) => response.json())

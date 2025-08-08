@@ -1,10 +1,10 @@
-import './App.css';
-import ProductsList from './components/filteredProducts/index';
+import "./App.css";
+import ProductsList from "./components/filteredProducts/index";
 
 function App() {
   return (
     <div className="App">
-     <ProductsList />
+      <ProductsList />
     </div>
   );
 }

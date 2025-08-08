@@ -7,7 +7,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:prettier/recommended", // enables eslint-plugin-prettier + config-prettier
+    "plugin:prettier/recommended", // Enables eslint-plugin-prettier + config-prettier
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -24,6 +24,8 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off", // important for React 17+
   },
   settings: {
     react: {

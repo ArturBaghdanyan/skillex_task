@@ -19,7 +19,7 @@ export const FetchData = ({ list, setList, setError }) => {
       const data = await response.json();
 
       const validProducts = data.products.filter(
-        (product) => product.rating > 0
+        (product) => product.rating > 0,
       );
 
       setList(validProducts);
