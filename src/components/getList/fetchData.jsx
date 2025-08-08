@@ -29,7 +29,7 @@ export const FetchData = ({ list, setList, setError }) => {
     } catch (error) {
       setError(error.message);
     }
-  }, [setList, setError]);
+  }, [setList, setShow, setError]);
 
   useEffect(() => {
     try {
